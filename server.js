@@ -15,7 +15,7 @@ const port = 3000;
 
 // CONTROLLERS
 const cocktailsController = require('./controllers/cocktailController.js');
-app.use('/bookmarks', bookmarksController);
+app.use('/cocktails', cocktailsController);
 
 
 ///// LISTENER /////
