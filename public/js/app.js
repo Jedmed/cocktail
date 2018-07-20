@@ -17,7 +17,8 @@ app.controller('MainController', ['$http', function($http) {
       method: 'GET',
       url: this.searchURL + this.cocktailName
     }).then(response => {
-      console.log(response.data)
+      // console.log(response.data)
+      this.cocktails = response.data
     }, error => {
       console.log(error)
     }).catch(err => console.log('Catch: ', err))
