@@ -16,17 +16,18 @@
       <input type="text" placeholder="cocktail name" ng-model="ctrl.cocktailName">
       <button type="submit">SUBMIT</button>
     </form>
-    <!-- display cocktails -->
     <div ng-repeat="cocktail in ctrl.cocktails">
-      <h2>{{cocktail.Name}}</h2>
-      <img ng-src="{{cocktail.img}}" alt="{{cocktail.name}}">
-      <p>{{cocktail.instructions}}</p>
-      <h4>Ingredients: </h4>
+      {{cocktail.strDrink}}
+    </div>
+    <!-- display cocktails -->
+    <div>
+      <p>{{cocktails}}</p>
       <h2>{{ctrl.name}}</h2>
       <img ng-src="{{ctrl.img}}" alt="{{cocktail.name}}">
+      <h4 ng-if="ctrl.ingredient1">Instructions: </h4>
       <p>{{ctrl.instructions}}</p>
-      <h4>Ingredients & Measurement: </h4>
-      <ul>
+      <h4 ng-if="ctrl.ingredient1">Ingredients & Measurement: </h4>
+      <ul ng-if="ctrl.ingredient1">
         <li ng-if="ctrl.ingredient1">{{ctrl.ingredient1}}<span ng-if="ctrl.measure1"> - </span>{{ctrl.measure1}}</li>
         <li ng-if="ctrl.ingredient2">{{ctrl.ingredient2}}<span ng-if="ctrl.measure2"> - </span>{{ctrl.measure2}}</li>
         <li ng-if="ctrl.ingredient3">{{ctrl.ingredient3}}<span ng-if="ctrl.measure3"> - </span>{{ctrl.measure3}}</li>
