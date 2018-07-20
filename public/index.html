@@ -22,33 +22,20 @@
       <img ng-src="{{cocktail.img}}" alt="{{cocktail.name}}">
       <p>{{cocktail.instructions}}</p>
       <h4>Ingredients: </h4>
+      <h2>{{ctrl.name}}</h2>
+      <img ng-src="{{ctrl.img}}" alt="{{cocktail.name}}">
+      <p>{{ctrl.instructions}}</p>
+      <h4>Ingredients & Measurement: </h4>
       <ul>
-        <li>
-          {{cocktail.ingredient1}}
-          {{cocktail.ingredient2}}
-          {{cocktail.ingredient3}}
-          {{cocktail.ingredient4}}
-          {{cocktail.ingredient5}}
-          {{cocktail.ingredient6}}
-          {{cocktail.ingredient7}}
-          {{cocktail.ingredient8}}
-        </li>
-      </ul>
-      <h4>Measure Ingredients: </h4>
-      <ul>
-        <li>
-          {{cocktail.measure1}}
-          {{cocktail.measure2}}
-          {{cocktail.measure3}}
-          {{cocktail.measure4}}
-          {{cocktail.measure5}}
-          {{cocktail.measure6}}
-          {{cocktail.measure7}}
-          {{cocktail.measure8}}
-        </li>
+        <li>{{ctrl.ingredient1}} - {{ctrl.measure1}}</li>
+        <li>{{ctrl.ingredient2}} - {{ctrl.measure2}}</li>
+        <li>{{ctrl.ingredient3}} - {{ctrl.measure3}}</li>
+        <li>{{ctrl.ingredient4}} - {{ctrl.measure4}}</li>
+        <li>{{ctrl.ingredient5}} - {{ctrl.measure5}}</li>
+        <li>{{ctrl.ingredient6}} - {{ctrl.measure6}}</li>
+        <li>{{ctrl.ingredient7}} - {{ctrl.measure7}}</li>
+        <li>{{ctrl.ingredient8}} - {{ctrl.measure8}}</li>
       </ul>
     </div>
-
-    {{ ctrl.test }}
   </body>
 </html>
