@@ -24,6 +24,6 @@ const cocktailSchema = new mongoose.Schema({
 	measure8: String,
 });
 
-const Cocktails = mongoose.model('Cocktail', cocktailSchema);
+const Cocktails = mongoose.model('Cocktails', cocktailSchema);
 
 module.exports = Cocktails;
