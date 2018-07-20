@@ -18,19 +18,23 @@
     </form>
     <!-- display cocktails -->
     <div ng-repeat="cocktail in ctrl.cocktails">
+      <h2>{{cocktail.Name}}</h2>
+      <img ng-src="{{cocktail.img}}" alt="{{cocktail.name}}">
+      <p>{{cocktail.instructions}}</p>
+      <h4>Ingredients: </h4>
       <h2>{{ctrl.name}}</h2>
       <img ng-src="{{ctrl.img}}" alt="{{cocktail.name}}">
       <p>{{ctrl.instructions}}</p>
       <h4>Ingredients & Measurement: </h4>
       <ul>
-        <li>{{ctrl.ingredient1}} - {{ctrl.measure1}}</li>
-        <li>{{ctrl.ingredient2}} - {{ctrl.measure2}}</li>
-        <li>{{ctrl.ingredient3}} - {{ctrl.measure3}}</li>
-        <li>{{ctrl.ingredient4}} - {{ctrl.measure4}}</li>
-        <li>{{ctrl.ingredient5}} - {{ctrl.measure5}}</li>
-        <li>{{ctrl.ingredient6}} - {{ctrl.measure6}}</li>
-        <li>{{ctrl.ingredient7}} - {{ctrl.measure7}}</li>
-        <li>{{ctrl.ingredient8}} - {{ctrl.measure8}}</li>
+        <li ng-if="ctrl.ingredient1">{{ctrl.ingredient1}}<span ng-if="ctrl.measure1"> - </span>{{ctrl.measure1}}</li>
+        <li ng-if="ctrl.ingredient2">{{ctrl.ingredient2}}<span ng-if="ctrl.measure2"> - </span>{{ctrl.measure2}}</li>
+        <li ng-if="ctrl.ingredient3">{{ctrl.ingredient3}}<span ng-if="ctrl.measure3"> - </span>{{ctrl.measure3}}</li>
+        <li nf-ig="ctrl.ingredient4">{{ctrl.ingredient4}}<span ng-if="ctrl.measure4"> - </span>{{ctrl.measure4}}</li>
+        <li ng-if="ctrl.ingredient5">{{ctrl.ingredient5}}<span ng-if="ctrl.measure5"> - </span>{{ctrl.measure5}}</li>
+        <li ng-if="ctrl.ingredient6">{{ctrl.ingredient6}}<span ng-if="ctrl.measure6"> - </span>{{ctrl.measure6}}</li>
+        <li ng-if="ctrl.ingredient7">{{ctrl.ingredient7}}<span ng-if="ctrl.measure7"> - </span>{{ctrl.measure7}}</li>
+        <li ng-if="ctrl.ingredient8">{{ctrl.ingredient8}}<span ng-if="ctrl.measure8"> - </span>{{ctrl.measure8}}</li>
       </ul>
     </div>
   </body>
