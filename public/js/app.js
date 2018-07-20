@@ -18,7 +18,7 @@ app.controller('MainController', ['$http', function($http) {
       url: this.searchURL + this.cocktailName
     }).then(response => {
     	// controller.cocktails = response.data;
-      this.cocktails = response.data;
+      this.cocktails = response.data.drinks;
       this.name = response.data.drinks[0].strDrink;
       this.instructions = response.data.drinks[0].strInstructions;
       this.img = response.data.drinks[0].strDrinkThumb;
@@ -38,6 +38,7 @@ app.controller('MainController', ['$http', function($http) {
       this.measure6 = response.data.drinks[0].strMeasure6;
       this.measure7 = response.data.drinks[0].strMeasure7;
       this.measure8 = response.data.drinks[0].strMeasure8;
+      console.log(response.data.drinks)
       console.log(response.data.drinks[0])
     }, error => {
       console.log(error)
