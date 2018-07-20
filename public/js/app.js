@@ -6,6 +6,6 @@ app.controller('MainController', ['$http', function($http) {
   // empty string for cocktail name
   this.cocktailName = '';
 
-  this.test = "Hello!";
+  this.test = "Raven!";
 
 }]);
