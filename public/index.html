@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html ng-app="MyApp" lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Coctails</title>
     <!-- angular cdn link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
     <!-- app.js link  -->
-    <script src="/js/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/app.js" charset="utf-8"></script>
     <!-- css link -->
     <link rel="stylesheet" href="/css/main.css">
   </head>
-  <body>
-
+  <body ng-controller="MainController as ctrl">
+    {{ ctrl.test }}
   </body>
 </html>
