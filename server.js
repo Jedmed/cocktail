@@ -13,10 +13,6 @@ app.use(express.static('public'));
 ///// PORT /////
 const port = process.env.PORT || 3000;
 
-app.get('/', (req,res) => {
-  res.send('this works');
-})
-
 // CONTROLLERS
 const cocktailsController = require('./controllers/cocktailController.js');
 app.use('/cocktails', cocktailsController);
