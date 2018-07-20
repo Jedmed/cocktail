@@ -4,6 +4,6 @@ app.controller('MainController', ['$http', function($http) {
   // controller var
   const controller = this;
 
-  this.test = "Hello!";
+  this.test = "Raven!";
 
 }]);
