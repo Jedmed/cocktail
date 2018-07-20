@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/cocktails';
  mongoose.connect(mongoUri);
 
+///// MIDDLEWARE /////
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -18,7 +20,7 @@ app.use('/cocktails', cocktailsController);
 
 ///// LISTENER /////
 app.listen(port, () => {
-  console.log('Listening on port: ', port);
+  console.log('Listening on port:', port);
 })
 
 ///// CONNECTIONS /////
