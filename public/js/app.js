@@ -3,13 +3,9 @@ const app = angular.module('MyApp', []);
 app.controller('MainController', ['$http', function($http) {
   // controller var
   const controller = this;
-<<<<<<< HEAD
+
   this.cocktailName = '';
   this.cocktails = [];
-=======
-  // empty string for cocktail name
-  this.cocktailName = '';
->>>>>>> b0c900963968d67e5c840656dec284987601205f
 
   this.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php/?'
   this.apikey = 'apikey=' + '1'
