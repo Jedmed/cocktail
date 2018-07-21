@@ -7,6 +7,7 @@ app.controller('MainController', ['$http', function($http) {
   // Cocktail Controllers
   this.cocktailName = '';
   this.cocktails = [];
+  this.indexOfEdit;
 
   // Build API Url
   this.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php/?'
@@ -22,6 +23,7 @@ app.controller('MainController', ['$http', function($http) {
       url: this.searchURL + this.cocktailName
     }).then(response => {
     	// controller.cocktails = response.data;
+      console.log(response.data);
       this.cocktails = response.data.drinks;
       this.name = response.data.drinks[0].strDrink;
       this.instructions = response.data.drinks[0].strInstructions;
