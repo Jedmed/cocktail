@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/cocktails';
- mongoose.connect(mongoUri);
 
 ///// MIDDLEWARE /////
 app.use(express.urlencoded({ extended: false }))
@@ -24,7 +23,7 @@ app.listen(port, () => {
 })
 
 ///// CONNECTIONS /////
-mongoose.connect(mongoUri);
+mongoose.connect(mongoUri, { useNewUrlParser: true });
 mongoose.connection.on('open', () => {
 	console.log('connected to mongoose!!!!!!!!');
 });
