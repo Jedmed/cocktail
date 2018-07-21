@@ -1,5 +1,7 @@
+// Get Dependencies
 const mongoose = require('mongoose');
 
+// Cocktail Schema
 const cocktailSchema = new mongoose.Schema({
 	name: String,
 	img: String,
@@ -24,6 +26,7 @@ const cocktailSchema = new mongoose.Schema({
 	measure8: String,
 });
 
+// Export Schema
 const Cocktails = mongoose.model('Cocktails', cocktailSchema);
 
 module.exports = Cocktails;

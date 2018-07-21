@@ -1,18 +1,21 @@
 const app = angular.module('MyApp', []);
 
 app.controller('MainController', ['$http', function($http) {
-  // controller var
+  // Controller Var
   const controller = this;
 
+  // Cocktail Controllers
   this.cocktailName = '';
   this.cocktails = [];
 
+  // Build API Url
   this.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php/?'
   this.apikey = 'apikey=' + '1'
   this.query = 's='
   this.searchURL = this.baseURL + this.apikey + '&' + this.query
   console.log(this.searchURL);
 
+  // API Query
   this.getCocktails = () => {
     $http({
       method: 'GET',
@@ -39,8 +42,6 @@ app.controller('MainController', ['$http', function($http) {
       this.measure6 = response.data.drinks[0].strMeasure6;
       this.measure7 = response.data.drinks[0].strMeasure7;
       this.measure8 = response.data.drinks[0].strMeasure8;
-      console.log(response.data.drinks)
-      console.log(response.data.drinks[0])
     }, error => {
       console.log(error)
     }).catch(err => console.log('Catch: ', err))

@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html ng-app="MyApp" lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Coctails</title>
-    <!-- angular cdn link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
-    <!-- app.js link  -->
-    <script type="text/javascript" src="/js/app.js" charset="utf-8"></script>
-    <!-- css link -->
-    <link rel="stylesheet" href="/css/main.css">
-  </head>
-  <body ng-controller="MainController as ctrl">
-    <!-- search form for cocktails -->
-    <form name="getCocktails" ng-submit="ctrl.getCocktails()">
-      <input type="text" placeholder="cocktail name" ng-model="ctrl.cocktailName">
-      <button type="submit">SUBMIT</button>
-    </form>
-    <div ng-repeat="cocktail in ctrl.cocktails">
-      {{cocktail.strDrink}}
-    </div>
-    <!-- display cocktails -->
-    <div>
-      <p>{{cocktails}}</p>
-      <h2>{{ctrl.name}}</h2>
-      <img ng-src="{{ctrl.img}}" alt="{{cocktail.name}}">
-      <h4 ng-if="ctrl.ingredient1">Instructions: </h4>
-      <p>{{ctrl.instructions}}</p>
-      <h4 ng-if="ctrl.ingredient1">Ingredients & Measurement: </h4>
-      <ul ng-if="ctrl.ingredient1">
-        <li ng-if="ctrl.ingredient1">{{ctrl.ingredient1}}<span ng-if="ctrl.measure1"> - </span>{{ctrl.measure1}}</li>
-        <li ng-if="ctrl.ingredient2">{{ctrl.ingredient2}}<span ng-if="ctrl.measure2"> - </span>{{ctrl.measure2}}</li>
-        <li ng-if="ctrl.ingredient3">{{ctrl.ingredient3}}<span ng-if="ctrl.measure3"> - </span>{{ctrl.measure3}}</li>
-        <li nf-ig="ctrl.ingredient4">{{ctrl.ingredient4}}<span ng-if="ctrl.measure4"> - </span>{{ctrl.measure4}}</li>
-        <li ng-if="ctrl.ingredient5">{{ctrl.ingredient5}}<span ng-if="ctrl.measure5"> - </span>{{ctrl.measure5}}</li>
-        <li ng-if="ctrl.ingredient6">{{ctrl.ingredient6}}<span ng-if="ctrl.measure6"> - </span>{{ctrl.measure6}}</li>
-        <li ng-if="ctrl.ingredient7">{{ctrl.ingredient7}}<span ng-if="ctrl.measure7"> - </span>{{ctrl.measure7}}</li>
-        <li ng-if="ctrl.ingredient8">{{ctrl.ingredient8}}<span ng-if="ctrl.measure8"> - </span>{{ctrl.measure8}}</li>
-      </ul>
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Coctails</title>
+  <!-- angular cdn link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+  <!-- app.js link  -->
+  <script type="text/javascript" src="/js/app.js" charset="utf-8"></script>
+  <!-- css link -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body ng-controller="MainController as ctrl">
+  <!-- search form for cocktails -->
+  <form name="getCocktails" ng-submit="ctrl.getCocktails()">
+    <input type="text" placeholder="cocktail name" ng-model="ctrl.cocktailName">
+    <button type="submit">SUBMIT</button>
+  </form>
+  <div ng-repeat="cocktail in ctrl.cocktails">
+    {{cocktail.strDrink}}
+  </div>
+  <!-- display cocktails -->
+  <div>
+    <p>{{cocktails}}</p>
+    <h2>{{ctrl.name}}</h2>
+    <img ng-src="{{ctrl.img}}" alt="{{cocktail.name}}">
+    <h4 ng-if="ctrl.ingredient1">Instructions: </h4>
+    <p>{{ctrl.instructions}}</p>
+    <h4 ng-if="ctrl.ingredient1">Ingredients & Measurement: </h4>
+    <ul ng-if="ctrl.ingredient1">
+      <li ng-if="ctrl.ingredient1">{{ctrl.ingredient1}}<span ng-if="ctrl.measure1"> - </span>{{ctrl.measure1}}</li>
+      <li ng-if="ctrl.ingredient2">{{ctrl.ingredient2}}<span ng-if="ctrl.measure2"> - </span>{{ctrl.measure2}}</li>
+      <li ng-if="ctrl.ingredient3">{{ctrl.ingredient3}}<span ng-if="ctrl.measure3"> - </span>{{ctrl.measure3}}</li>
+      <li nf-ig="ctrl.ingredient4">{{ctrl.ingredient4}}<span ng-if="ctrl.measure4"> - </span>{{ctrl.measure4}}</li>
+      <li ng-if="ctrl.ingredient5">{{ctrl.ingredient5}}<span ng-if="ctrl.measure5"> - </span>{{ctrl.measure5}}</li>
+      <li ng-if="ctrl.ingredient6">{{ctrl.ingredient6}}<span ng-if="ctrl.measure6"> - </span>{{ctrl.measure6}}</li>
+      <li ng-if="ctrl.ingredient7">{{ctrl.ingredient7}}<span ng-if="ctrl.measure7"> - </span>{{ctrl.measure7}}</li>
+      <li ng-if="ctrl.ingredient8">{{ctrl.ingredient8}}<span ng-if="ctrl.measure8"> - </span>{{ctrl.measure8}}</li>
+    </ul>
+  </div>
+</body>
+
 </html>
