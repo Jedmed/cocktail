@@ -9,6 +9,11 @@ const session = require('express-session');
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(express.static('public'));
+app.use(session({
+    secret:'feedmeseymour',
+    resave: false,
+    saveUninitialized: false
+}));
 
 ///// PORT /////
 const port = process.env.PORT || 3000;
