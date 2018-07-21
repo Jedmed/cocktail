@@ -13,7 +13,7 @@ app.use(express.static('public'));
 ///// PORT /////
 const port = process.env.PORT || 3000;
 
-app.get('/app', (req, res)=>{
+app.get('/cocktails', (req, res)=>{
     if(req.session.currentUser){
         res.json(req.session.currentUser);
     } else {
