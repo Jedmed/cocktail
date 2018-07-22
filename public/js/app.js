@@ -4,6 +4,21 @@ app.controller('MainController', ['$http', function($http) {
   // Controller Var
   const controller = this;
 
+  this.indexOfEdit;
+  this.user = "Cocktail";
+  this.createForm = {}
+  this.showLogin = false;
+  this.loggedIn = false;
+
+  //Toggle Login
+  this.toggleLogin = () => {
+    this.showLogin = !this.showLogin;
+  }
+
+  this.toggleLogout = () => {
+    this.loggedIn = !this.loggedIn;
+  }
+
   // Cocktail Controllers
   this.cocktailName = '';
   this.cocktails = [];
@@ -47,6 +62,54 @@ app.controller('MainController', ['$http', function($http) {
     }, error => {
       console.log(error)
     }).catch(err => console.log('Catch: ', err))
+  }
+
+  // Create New User
+  this.createUser = function() {
+    $http({
+      method: 'POST',
+      url: '/users',
+      data: {
+        username: this.username,
+        password: this.password
+      }
+    }).then(function(response) {
+
+    }, function() {
+      console.log('error');
+    });
+  }
+
+  // Log In
+  this.logIn = function() {
+    $http({
+      method: 'POST',
+      url: '/sessions',
+      data: {
+        username: this.username,
+        password: this.password
+      }
+    }).then(function(response) {
+      controller.loggedInUsername = response.data.user;
+      controller.user = "Logged In"
+    }, function() {
+      console.log('error');
+    });
+  }
+
+  // Log Out
+  this.logOut = function() {
+    $http({
+      method: 'DELETE',
+      url: '/sessions',
+    }).then(function(response) {
+      console.log('logged out');
+      controller.user = "Cocktail"
+      controller.toggleLogin();
+      controller.loggedIn = false;
+    }, function() {
+      console.log('error');
+    })
   }
 
 }]); //Closes app controller
