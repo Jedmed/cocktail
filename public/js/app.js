@@ -8,7 +8,7 @@ app.controller('MainController', ['$http', function($http) {
   this.user = "Cocktail";
   this.showLogin = false;
   this.loggedIn = false;
-    this.cocktails = [];
+  this.cocktails = [];
 
   //Toggle Login
   this.toggleLogin = () => {
@@ -86,32 +86,31 @@ app.controller('MainController', ['$http', function($http) {
   }
 
   // Save Cocktail
-  this.addCocktail = function() {
+  this.addCocktail = function(index) {
     console.log(this);
-    console.log(controller);
     $http({
       method: 'POST',
       url: '/cocktails',
       data: {
-        name: this.cocktailName,
-        img: this.cocktails.strDrinkThumb,
-        instructions: this.instructions,
-        ingredient1: this.ingredient1,
-        ingredient2: this.ingredient2,
-        ingredient3: this.ingredient3,
-        ingredient4: this.ingredient4,
-        ingredient5: this.ingredient5,
-        ingredient6: this.ingredient6,
-        ingredient7: this.ingredient7,
-        ingredient8: this.ingredient8,
-        measure1: this.measure1,
-        measure2: this.measure2,
-        measure3: this.measure3,
-        measure4: this.measure4,
-        measure5: this.measure5,
-        measure6: this.measure6,
-        measure7: this.measure7,
-        measure8: this.measure8,
+        name: this.cocktails[index].strDrink,
+        instructions: this.cocktails[index].strInstructions,
+        img: this.cocktails[index].strDrinkThumb,
+        ingredient1: this.cocktails[index].strIngredient1,
+        ingredient2: this.cocktails[index].strIngredient2,
+        ingredient3: this.cocktails[index].strIngredient3,
+        ingredient4: this.cocktails[index].strIngredient4,
+        ingredient5: this.cocktails[index].strIngredient5,
+        ingredient6: this.cocktails[index].strIngredient6,
+        ingredient7: this.cocktails[index].strIngredient7,
+        ingredient8: this.cocktails[index].strIngredient8,
+        measure1: this.cocktails[index].strMeasure1,
+        measure2: this.cocktails[index].strMeasure2,
+        measure3: this.cocktails[index].strMeasure3,
+        measure4: this.cocktails[index].strMeasure4,
+        measure5: this.cocktails[index].strMeasure5,
+        measure6: this.cocktails[index].strMeasure6,
+        measure7: this.cocktails[index].strMeasure7,
+        measure8: this.cocktails[index].strMeasure8
       }
     }).then(function(response) {
       controller.showCocktails();

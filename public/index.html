@@ -61,7 +61,7 @@
       <li><a href="#" ng-click="ctrl.indexOfEdit = $index">{{cocktail.strDrink}}</a>
         <!-- display cocktails -->
         <div ng-if="$index === ctrl.indexOfEdit">
-          <form ng-submit="ctrl.addCocktail()">
+          <form ng-submit="ctrl.addCocktail($index)">
             <input type="submit" value="Save to my List" />
             <h2>{{cocktail.strDrink}}</h2>
             <img ng-src="{{cocktail.strDrinkThumb}}" alt="{{cocktail.strDrink}}">
