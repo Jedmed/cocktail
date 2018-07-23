@@ -6,9 +6,9 @@ app.controller('MainController', ['$http', function($http) {
 
   this.indexOfEdit;
   this.user = "Cocktail";
-  this.createForm = {}
   this.showLogin = false;
   this.loggedIn = false;
+    this.cocktails = [];
 
   //Toggle Login
   this.toggleLogin = () => {
@@ -19,17 +19,11 @@ app.controller('MainController', ['$http', function($http) {
     this.loggedIn = !this.loggedIn;
   }
 
-  // Cocktail Controllers
-  this.cocktailName = '';
-  this.cocktails = [];
-  this.indexOfEdit;
-
   // Build API Url
   this.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php/?'
   this.apikey = 'apikey=' + '1'
   this.query = 's='
   this.searchURL = this.baseURL + this.apikey + '&' + this.query
-  console.log(this.searchURL);
 
   // API Query
   this.getCocktails = () => {
@@ -37,28 +31,7 @@ app.controller('MainController', ['$http', function($http) {
       method: 'GET',
       url: this.searchURL + this.cocktailName
     }).then(response => {
-    	// controller.cocktails = response.data;
-      console.log(response.data);
       this.cocktails = response.data.drinks;
-      this.name = response.data.drinks[0].strDrink;
-      this.instructions = response.data.drinks[0].strInstructions;
-      this.img = response.data.drinks[0].strDrinkThumb;
-      this.ingredient1 = response.data.drinks[0].strIngredient1;
-      this.ingredient2 = response.data.drinks[0].strIngredient2;
-      this.ingredient3 = response.data.drinks[0].strIngredient3;
-      this.ingredient4 = response.data.drinks[0].strIngredient4;
-      this.ingredient5 = response.data.drinks[0].strIngredient5;
-      this.ingredient6 = response.data.drinks[0].strIngredient6;
-      this.ingredient7 = response.data.drinks[0].strIngredient7;
-      this.ingredient8 = response.data.drinks[0].strIngredient8;
-      this.measure1 = response.data.drinks[0].strMeasure1;
-      this.measure2 = response.data.drinks[0].strMeasure2;
-      this.measure3 = response.data.drinks[0].strMeasure3;
-      this.measure4 = response.data.drinks[0].strMeasure4;
-      this.measure5 = response.data.drinks[0].strMeasure5;
-      this.measure6 = response.data.drinks[0].strMeasure6;
-      this.measure7 = response.data.drinks[0].strMeasure7;
-      this.measure8 = response.data.drinks[0].strMeasure8;
     }, error => {
       console.log(error)
     }).catch(err => console.log('Catch: ', err))
@@ -111,5 +84,53 @@ app.controller('MainController', ['$http', function($http) {
       console.log('error');
     })
   }
+
+  // Save Cocktail
+  this.addCocktail = function() {
+    console.log(this);
+    console.log(controller);
+    $http({
+      method: 'POST',
+      url: '/cocktails',
+      data: {
+        name: this.cocktailName,
+        img: this.cocktails.strDrinkThumb,
+        instructions: this.instructions,
+        ingredient1: this.ingredient1,
+        ingredient2: this.ingredient2,
+        ingredient3: this.ingredient3,
+        ingredient4: this.ingredient4,
+        ingredient5: this.ingredient5,
+        ingredient6: this.ingredient6,
+        ingredient7: this.ingredient7,
+        ingredient8: this.ingredient8,
+        measure1: this.measure1,
+        measure2: this.measure2,
+        measure3: this.measure3,
+        measure4: this.measure4,
+        measure5: this.measure5,
+        measure6: this.measure6,
+        measure7: this.measure7,
+        measure8: this.measure8,
+      }
+    }).then(function(response) {
+      controller.showCocktails();
+    }, () => {
+      console.log('error');
+    });
+  }
+
+  // Show Cocktails
+  this.showCocktails = function() {
+    $http({
+      method: 'GET',
+      url: '/cocktails'
+    }).then(function(response) {
+      controller.myCocktails = response.data;
+    }, () => {
+      console.log('error');
+    });
+  };
+  this.showCocktails();
 
 }]); //Closes app controller

@@ -1,0 +1,22 @@
+input {
+  width: 100%;
+  border-radius: 2px;
+}
+
+.inputs {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Log {
+  display: none !important;
+}
+.hide-log {
+  display: none;
+}
+.Logged {
+  display: flex;
+}
+
+.my-cocktails {
+  border: 1px solid black;
+}

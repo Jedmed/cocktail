@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Cocktail Schema
-const cocktailSchema = new mongoose.Schema({
+const cocktailSchema = mongoose.Schema({
 	name: String,
 	img: String,
 	instructions: String,
@@ -23,7 +23,7 @@ const cocktailSchema = new mongoose.Schema({
 	measure5: String,
 	measure6: String,
 	measure7: String,
-	measure8: String,
+	measure8: String
 });
 
 // Export Schema

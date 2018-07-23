@@ -18,6 +18,14 @@ app.use(session({
 ///// PORT /////
 const port = process.env.PORT || 3000;
 
+// CONTROLLERS
+const cocktailsController = require('./controllers/cocktailController.js');
+app.use('/cocktails', cocktailsController);
+const sessionsController = require('./controllers/sessions.js');
+app.use('/sessions', sessionsController);
+const userController = require('./controllers/users.js')
+app.use('/users', userController);
+
 app.get('/cocktails', (req, res)=>{
     if(req.session.currentUser){
         res.json(req.session.currentUser);
@@ -28,14 +36,6 @@ app.get('/cocktails', (req, res)=>{
         });
     }
 })
-
-// CONTROLLERS
-const cocktailsController = require('./controllers/cocktailController.js');
-app.use('/cocktails', cocktailsController);
-const sessionsController = require('./controllers/sessions.js');
-app.use('/sessions', sessionsController);
-const userController = require('./controllers/users.js')
-app.use('/users', userController);
 
 ///// LISTENER /////
 app.listen(port, () => {
