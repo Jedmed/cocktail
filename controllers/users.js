@@ -4,7 +4,7 @@ const User = require('../models/users.js');
 const bcrypt = require('bcrypt');
 
 // index route
-router.get('/:id', (req, res) => {
+router.get('/:username', (req, res) => {
 	User.find({}, (err, foundCocktail) => {
 		res.json(foundCocktail);
 	});
@@ -22,7 +22,7 @@ router.post('/', (req, res)=>{
 });
 
 // put route for user saved My Cocktails
-router.put('/:id', (req, res) => {
+router.put('/:username', (req, res) => {
 	User.create(req.body, (err, addedCocktail) => {
 		res.json(addedCocktail);
 	});
