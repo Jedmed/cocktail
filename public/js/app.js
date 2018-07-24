@@ -9,6 +9,7 @@ app.controller('MainController', ['$http', function($http) {
   this.showLogin = false;
   this.loggedIn = false;
   this.cocktails = [];
+  this.showMyCocktails = false;
 
   //Toggle Login
   this.toggleLogin = () => {
@@ -47,7 +48,7 @@ app.controller('MainController', ['$http', function($http) {
         password: this.password
       }
     }).then(function(response) {
-
+    	console.log(response);
     }, function() {
       console.log('error');
     });
@@ -64,7 +65,9 @@ app.controller('MainController', ['$http', function($http) {
       }
     }).then(function(response) {
       controller.loggedInUsername = response.data.user;
-      controller.user = "Logged In"
+      controller.user = "Logged In";
+      controller.showMyCocktails = true;
+      console.log(response);
     }, function() {
       console.log('error');
     });
@@ -80,6 +83,7 @@ app.controller('MainController', ['$http', function($http) {
       controller.user = "Cocktail"
       controller.toggleLogin();
       controller.loggedIn = false;
+      controller.showMyCocktails = false;
     }, function() {
       console.log('error');
     })
@@ -89,8 +93,8 @@ app.controller('MainController', ['$http', function($http) {
   this.addCocktail = function(index) {
     console.log(this);
     $http({
-      method: 'POST',
-      url: '/cocktails',
+      method: 'PUT',
+      url: '/users/' + this.username,
       data: {
         name: this.cocktails[index].strDrink,
         instructions: this.cocktails[index].strInstructions,
@@ -123,9 +127,11 @@ app.controller('MainController', ['$http', function($http) {
   this.showCocktails = function() {
     $http({
       method: 'GET',
-      url: '/cocktails'
+      url: '/users/' + this.username
     }).then(function(response) {
       controller.myCocktails = response.data;
+      console.log(response.data)
+      // controller.loggedInUser = this.username;
     }, () => {
       console.log('error');
     });
