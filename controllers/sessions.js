@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/users.js');
 const bcrypt = require('bcrypt');
 
+// logout
 router.delete('/', (req, res)=>{
     req.session.destroy(() => {
         res.status(200).json({
@@ -12,14 +13,12 @@ router.delete('/', (req, res)=>{
     });
 });
 
+// login
 router.post('/', (req, res)=>{
     User.findOne({username:req.body.username}, (err, foundUser)=>{
-        if(bcrypt.compareSync(req.body.password, foundUser.password)){
+        if(foundUser && bcrypt.compareSync(req.body.password, foundUser.password)){
             req.session.currentUser = foundUser;
-            res.status(201).json({
-                status: 201,
-                message: 'session created'
-            });
+            res.status(201).json(foundUser)
         } else {
             res.status(401).json({
                 status: 401,

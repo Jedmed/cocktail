@@ -6,8 +6,8 @@ app.controller('MainController', ['$http', function($http) {
 
   this.indexOfEdit;
   this.user = "Cocktail";
-  this.showLogin = false;
-  this.loggedIn = false;
+  // this.showLogin = false;
+  // this.loggedIn = false;
   this.cocktails = [];
   this.showMyCocktails = false;
 
@@ -39,7 +39,7 @@ app.controller('MainController', ['$http', function($http) {
   }
 
   // Create New User
-  this.createUser = function() {
+  this.createUser = () => {
     $http({
       method: 'POST',
       url: '/users',
@@ -47,15 +47,19 @@ app.controller('MainController', ['$http', function($http) {
         username: this.username,
         password: this.password
       }
-    }).then(function(response) {
-    	console.log(response);
-    }, function() {
+    }).then(response => {
+      this.currentUser = response.data;
+      this.myCocktail;
+      this.user = "Logged In";
+      this.showMyCocktails = true;
+      this.showCocktails();
+    }, error => {
       console.log('error');
     });
   }
 
   // Log In
-  this.logIn = function() {
+  this.logIn = () => {
     $http({
       method: 'POST',
       url: '/sessions',
@@ -63,105 +67,96 @@ app.controller('MainController', ['$http', function($http) {
         username: this.username,
         password: this.password
       }
-    }).then(function(response) {
-      controller.loggedInUsername = response.data.user;
-      controller.user = "Logged In";
-      controller.showMyCocktails = true;
-      console.log(response);
-    }, function() {
+    }).then(response => {
+      this.currentUser = response.data;
+      this.user = "Logged In";
+      this.showMyCocktails = true;
+      this.showCocktails();
+    }, error => {
       console.log('error');
     });
   }
 
   // Log Out
-  this.logOut = function() {
+  this.logOut = () => {
     $http({
       method: 'DELETE',
       url: '/sessions',
-    }).then(function(response) {
-      console.log('logged out');
-      controller.user = "Cocktail"
-      controller.toggleLogin();
-      controller.loggedIn = false;
-      controller.showMyCocktails = false;
-    }, function() {
+    }).then(response => {
+      this.currentUser = null;
+      this.user = "Cocktail"
+      this.toggleLogin();
+      this.loggedIn = false;
+      this.showMyCocktails = false;
+    }, () => {
       console.log('error');
     })
   }
 
   // Save Cocktail
-  this.addCocktail = function(index) {
+  this.addCocktail = (index) => {
     // console.log(this.cocktails[index].idDrink);
     $http({
-      method: 'PUT',
-      url: '/users/' + this.username,
+      method: 'POST',
+      url: '/cocktails',
       data: {
-        name: this.cocktails[index].strDrink,
-        instructions: this.cocktails[index].strInstructions,
-        img: this.cocktails[index].strDrinkThumb,
-        ingredient1: this.cocktails[index].strIngredient1,
-        ingredient2: this.cocktails[index].strIngredient2,
-        ingredient3: this.cocktails[index].strIngredient3,
-        ingredient4: this.cocktails[index].strIngredient4,
-        ingredient5: this.cocktails[index].strIngredient5,
-        ingredient6: this.cocktails[index].strIngredient6,
-        ingredient7: this.cocktails[index].strIngredient7,
-        ingredient8: this.cocktails[index].strIngredient8,
-        measure1: this.cocktails[index].strMeasure1,
-        measure2: this.cocktails[index].strMeasure2,
-        measure3: this.cocktails[index].strMeasure3,
-        measure4: this.cocktails[index].strMeasure4,
-        measure5: this.cocktails[index].strMeasure5,
-        measure6: this.cocktails[index].strMeasure6,
-        measure7: this.cocktails[index].strMeasure7,
-        measure8: this.cocktails[index].strMeasure8
+        user: this.currentUser.username,
+        cocktail: [{
+          name: this.cocktails[index].strDrink,
+          instructions: this.cocktails[index].strInstructions,
+          img: this.cocktails[index].strDrinkThumb,
+          ingredient1: this.cocktails[index].strIngredient1,
+          ingredient2: this.cocktails[index].strIngredient2,
+          ingredient3: this.cocktails[index].strIngredient3,
+          ingredient4: this.cocktails[index].strIngredient4,
+          ingredient5: this.cocktails[index].strIngredient5,
+          ingredient6: this.cocktails[index].strIngredient6,
+          ingredient7: this.cocktails[index].strIngredient7,
+          ingredient8: this.cocktails[index].strIngredient8,
+          measure1: this.cocktails[index].strMeasure1,
+          measure2: this.cocktails[index].strMeasure2,
+          measure3: this.cocktails[index].strMeasure3,
+          measure4: this.cocktails[index].strMeasure4,
+          measure5: this.cocktails[index].strMeasure5,
+          measure6: this.cocktails[index].strMeasure6,
+          measure7: this.cocktails[index].strMeasure7,
+          measure8: this.cocktails[index].strMeasure8
+        }]
       }
-    }).then(function(response) {
-      controller.showCocktails();
+    }).then(response => {
+      this.myCocktails = response.data
     }, () => {
       console.log('error');
     });
   }
 
   // Show Cocktails
-  this.showCocktails = function() {
+  this.showCocktails = () => {
     $http({
       method: 'GET',
-      url: '/users/' + this.username
-    }).then(function(response) {
-      controller.myCocktails = response.data;
-      // console.log(response.data)
-      controller.loggedInUser = this.username;
+      url: '/cocktails/' + this.currentUser.username
+    }).then(response => {
+      this.myCocktails = response.data[0]
     }, () => {
       console.log('error');
     });
   };
-this.showCocktails();
+
 
   // DELETE COCKTAIL //
-  this.deleteCocktail = function(cocktail) {
+  this.deleteCocktail = (cocktail) => {
+    this.myCocktails.cocktail.splice(this.myCocktails.cocktail.indexOf(cocktail), 1);
     $http({
-      method: "DELETE",
-      url: "/users/" + cocktail._id
-    }).then(function(response) {
-      controller.showCocktails();
+      method: 'PUT',
+      url: '/cocktails/' + this.myCocktails._id,
+      data: this.myCocktails
+    }).then(response => {
+      this.showCocktails();
+    }, error => {
+      console.log('error');
     });
   }
 
- // // EDIT COCKTAIL //
- // this.editCocktail = function(cocktail) {
- //   $http({
- //     method: "DELETE",
- //     url: "/cocktails/" + cocktail._id,
- //     data: {
- //       name: this.name,
- //       img: this.img,
- //       instructions: this.instructions
- //     }
- //   }).then(function(response) {
- //     controller.getCocktails();
- //   });
- // }
 
 
 

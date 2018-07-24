@@ -1,3 +1,8 @@
+.login {
+  padding: 30px;
+  background-color: steelblue;
+}
+
 input {
   width: 100%;
   border-radius: 2px;

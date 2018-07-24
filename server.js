@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const mongoUri =  process.env.MONGODB_URI || 'mongodb://localhost:27017/cocktails';
 const session = require('express-session');
 
+///// PORT /////
+const port = process.env.PORT || 3000;
+
 ///// MIDDLEWARE /////
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
@@ -15,27 +18,13 @@ app.use(session({
     saveUninitialized: false
 }));
 
-///// PORT /////
-const port = process.env.PORT || 3000;
-
 // CONTROLLERS
-const cocktailsController = require('./controllers/cocktailController.js');
+const cocktailsController = require('./controllers/cocktails.js');
 app.use('/cocktails', cocktailsController);
 const sessionsController = require('./controllers/sessions.js');
 app.use('/sessions', sessionsController);
 const userController = require('./controllers/users.js')
 app.use('/users', userController);
-
-app.get('/cocktails', (req, res)=>{
-    if(req.session.currentUser){
-        res.json(req.session.currentUser);
-    } else {
-        res.status(401).json({
-            status: 401,
-            message: 'not logged in'
-        });
-    }
-})
 
 ///// LISTENER /////
 app.listen(port, () => {

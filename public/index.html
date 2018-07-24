@@ -16,40 +16,47 @@
 
 <body ng-controller="MainController as ctrl">
   <div class="container-fluid login">
-    <form class="row" ng-class="(ctrl.showLogin ? 'hide-log' : '')" ng-submit="ctrl.createUser()">
-      <div class="col-2 offset-4">
-        <h5 class="text-center">Create User</h5>
-      </div>
-      <div class="col-2">
-        <input type="text" ng-model="ctrl.username" placeholder="New Username" />
-      </div>
-      <div class="col-2">
-        <input type="password" ng-model="ctrl.password" placeholder="Password" />
-      </div>
-      <div class="col-2">
-        <input class="btn btn-secondary" type="submit" value="Create User" ng-click="ctrl.toggleLogin()" />
-      </div>
-    </form>
-    <form class="row hide-log" ng-submit="ctrl.logIn()" ng-class="(ctrl.showLogin ? 'Logged' : '') + ' ' + (ctrl.loggedIn ? 'Log' : '')">
-      <div class="col-2 offset-4">
-        <h5 class="text-center">Log In</h5>
-      </div>
-      <div class="col-2">
-        <input type="text" ng-model="ctrl.username" placeholder="Username" />
-      </div>
-      <div class="col-2">
-        <input type="password" ng-model="ctrl.password" placeholder="Password" />
-      </div>
-      <div class="col-2">
-        <input class="btn btn-secondary" type="submit" value="Log In" ng-click="ctrl.toggleLogout()" />
-      </div>
-    </form>
-    <form class="row" ng-class="(ctrl.loggedIn ? '' : 'Log')">
-      <div class="col-2 offset-10">
-        <input class="btn btn-danger" type="submit" value="Log Out" ng-click="ctrl.logOut()" />
-      </div>
-    </form>
+    <div class="row">
+      <form class="col-6" ng-class="(ctrl.showLogin ? 'hide-log' : '')" ng-submit="ctrl.createUser()">
+        <div class="row">
+          <div class="col-3">
+            <h5 class="text-center">Create User</h5>
+          </div>
+          <div class="col-3">
+            <input type="text" ng-model="ctrl.username" placeholder="New Username" />
+          </div>
+          <div class="col-3">
+            <input type="password" ng-model="ctrl.password" placeholder="Password" />
+          </div>
+          <div class="col-3">
+            <input class="btn btn-secondary" type="submit" value="Create User" ng-click="ctrl.toggleLogin()" />
+          </div>
+        </div>
+      </form>
+      <form class="col-6" ng-submit="ctrl.logIn()" ng-class="(ctrl.showLogin ? 'Logged' : '') + ' ' + (ctrl.loggedIn ? 'Log' : '')">
+        <div class="row">
+          <div class="col-3">
+            <h5 class="text-center">Log In</h5>
+          </div>
+          <div class="col-3">
+            <input type="text" ng-model="ctrl.username" placeholder="Username" />
+          </div>
+          <div class="col-3">
+            <input type="password" ng-model="ctrl.password" placeholder="Password" />
+          </div>
+          <div class="col-3">
+            <input class="btn btn-secondary" type="submit" value="Log In" ng-click="ctrl.toggleLogout()" />
+          </div>
+        </div>
+      </form>
+      <form class="row" ng-class="(ctrl.loggedIn ? '' : 'Log')">
+        <div class="col-2 offset-10">
+          <input class="btn btn-danger" type="submit" value="Log Out" ng-click="ctrl.logOut()" />
+        </div>
+      </form>
+    </div>
   </div>
+
   <div class="container">
     <h1>{{ ctrl.user }}</h1>
     <!-- search form for cocktails -->
@@ -86,7 +93,7 @@
   </div>
   <div class="container my-cocktails">
     <h1>My Cocktails</h1>
-    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails" ng-if="ctrl.showMyCocktails">
+    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails.cocktail">
       <h2>{{ myCocktail.name }}</h2>
       <img ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
       <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
@@ -102,8 +109,8 @@
         <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
         <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
 
-          <!-- delete cocktail -->
-          <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
+        <!-- delete cocktail -->
+        <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
 
       </ul>
     </div>
