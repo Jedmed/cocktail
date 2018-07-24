@@ -140,7 +140,6 @@ this.showCocktails();
 
   // DELETE COCKTAIL //
   this.deleteCocktail = function(cocktail) {
-    console.log('deleted on refresh');
     $http({
       method: "DELETE",
       url: "/users/" + cocktail._id

@@ -86,9 +86,9 @@
   </div>
   <div class="container my-cocktails">
     <h1>My Cocktails</h1>
-    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails">
+    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails" ng-if="ctrl.showMyCocktails">
       <h2>{{ myCocktail.name }}</h2>
-      <img ng-src="{{myCocktail.img}}" alt="{myCocktail.name}}">
+      <img ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
       <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
       <p>{{myCocktail.instructions}}</p>
       <h4 ng-if="myCocktail.ingredient1">Ingredients & Measurement: </h4>
