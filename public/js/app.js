@@ -134,7 +134,7 @@ this.showCocktails();
 
   // DELETE COCKTAIL //
   this.deleteCocktail = function(cocktail) {
-    console.log('clicked');
+    console.log('deleted on refresh');
     $http({
       method: "DELETE",
       url: "/cocktails/" + cocktail._id
