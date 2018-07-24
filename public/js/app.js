@@ -149,8 +149,20 @@ this.showCocktails();
     });
   }
 
- // EDIT COCKTAIL //
-
+ // // EDIT COCKTAIL //
+ // this.editCocktail = function(cocktail) {
+ //   $http({
+ //     method: "DELETE",
+ //     url: "/cocktails/" + cocktail._id,
+ //     data: {
+ //       name: this.name,
+ //       img: this.img,
+ //       instructions: this.instructions
+ //     }
+ //   }).then(function(response) {
+ //     controller.getCocktails();
+ //   });
+ // }
 
 
 
