@@ -14,106 +14,11 @@
   <link rel="stylesheet" href="/css/main.css">
 </head>
 
-<body ng-controller="MainController as ctrl">
-  <div class="container-fluid login">
-    <div class="row">
-      <form class="col-6" ng-class="(ctrl.showLogin ? 'hide-log' : '')" ng-submit="ctrl.createUser()">
-        <div class="row">
-          <div class="col-3">
-            <h5 class="text-center">Create User</h5>
-          </div>
-          <div class="col-3">
-            <input type="text" ng-model="ctrl.username" placeholder="New Username" />
-          </div>
-          <div class="col-3">
-            <input type="password" ng-model="ctrl.password" placeholder="Password" />
-          </div>
-          <div class="col-3">
-            <input class="btn btn-secondary" type="submit" value="Create User" ng-click="ctrl.toggleLogin()" />
-          </div>
-        </div>
-      </form>
-      <form class="col-6" ng-submit="ctrl.logIn()" ng-class="(ctrl.showLogin ? 'Logged' : '') + ' ' + (ctrl.loggedIn ? 'Log' : '')">
-        <div class="row">
-          <div class="col-3">
-            <h5 class="text-center">Log In</h5>
-          </div>
-          <div class="col-3">
-            <input type="text" ng-model="ctrl.username" placeholder="Username" />
-          </div>
-          <div class="col-3">
-            <input type="password" ng-model="ctrl.password" placeholder="Password" />
-          </div>
-          <div class="col-3">
-            <input class="btn btn-secondary" type="submit" value="Log In" ng-click="ctrl.toggleLogout()" />
-          </div>
-        </div>
-      </form>
-      <form class="row" ng-class="(ctrl.loggedIn ? '' : 'Log')">
-        <div class="col-2 offset-10">
-          <input class="btn btn-danger" type="submit" value="Log Out" ng-click="ctrl.logOut()" />
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="container">
-    <h1>{{ ctrl.user }}</h1>
-    <!-- search form for cocktails -->
-    <form name="getCocktails" ng-submit="ctrl.getCocktails()">
-      <input type="text" placeholder="Cocktail Name" ng-model="ctrl.cocktailName">
-      <button class="btn btn-secondary" type="submit">SUBMIT</button>
-    </form>
-    <ul ng-repeat="cocktail in ctrl.cocktails">
-      <li><a href="#" ng-click="ctrl.indexOfEdit = $index">{{cocktail.strDrink}}</a>
-
-        <!-- display cocktails -->
-        <div ng-if="$index === ctrl.indexOfEdit">
-          <form ng-submit="ctrl.addCocktail($index)">
-            <input type="submit" value="Save to my List" />
-            <h2>{{cocktail.strDrink}}</h2>
-            <img ng-src="{{cocktail.strDrinkThumb}}" alt="{{cocktail.strDrink}}">
-            <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
-            <p>{{cocktail.strInstructions}}</p>
-            <h4 ng-if="cocktail.strIngredient1">Ingredients & Measurement: </h4>
-            <ul ng-if="cocktail.strIngredient1">
-              <li ng-if="cocktail.strIngredient1">{{cocktail.strIngredient1}}<span ng-if="cocktail.strMeasure1"> - </span>{{cocktail.strMeasure1}}</li>
-              <li ng-if="cocktail.strIngredient2">{{cocktail.strIngredient2}}<span ng-if="cocktail.strMeasure2"> - </span>{{cocktail.strMeasure2}}</li>
-              <li ng-if="cocktail.strIngredient3">{{cocktail.strIngredient3}}<span ng-if="cocktail.strMeasure3"> - </span>{{cocktail.strMeasure3}}</li>
-              <li nf-ig="cocktail.strIngredient4">{{cocktail.strIngredient4}}<span ng-if="cocktail.strMeasure4"> - </span>{{cocktail.strMeasure4}}</li>
-              <li ng-if="cocktail.strIngredient5">{{cocktail.strIngredient5}}<span ng-if="cocktail.strMeasure5"> - </span>{{cocktail.strMeasure5}}</li>
-              <li ng-if="cocktail.strIngredient6">{{cocktail.strIngredient6}}<span ng-if="cocktail.strMeasure6"> - </span>{{cocktail.strMeasure6}}</li>
-              <li ng-if="cocktail.strIngredient7">{{cocktail.strIngredient7}}<span ng-if="cocktail.strMeasure7"> - </span>{{cocktail.strMeasure7}}</li>
-              <li ng-if="cocktail.strIngredient8">{{cocktail.strIngredient8}}<span ng-if="cocktail.strMeasure8"> - </span>{{cocktail.strMeasure8}}</li>
-            </ul>
-          </form>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="container my-cocktails">
-    <h1>My Cocktails</h1>
-    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails.cocktail">
-      <h2>{{ myCocktail.name }}</h2>
-      <img ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
-      <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
-      <p>{{myCocktail.instructions}}</p>
-      <h4 ng-if="myCocktail.ingredient1">Ingredients & Measurement: </h4>
-      <ul ng-if="myCocktail.ingredient1">
-        <li ng-if="myCocktail.ingredient1">{{myCocktail.ingredient1}}<span ng-if="myCocktail.measure1"> - </span>{{myCocktail.measure1}}</li>
-        <li ng-if="myCocktail.ingredient2">{{myCocktail.ingredient2}}<span ng-if="myCocktail.measure2"> - </span>{{myCocktail.measure2}}</li>
-        <li ng-if="myCocktail.ingredient3">{{myCocktail.ingredient3}}<span ng-if="myCocktail.measure3"> - </span>{{myCocktail.measure3}}</li>
-        <li nf-ig="myCocktail.ingredient4">{{myCocktail.ingredient4}}<span ng-if="myCocktail.measure4"> - </span>{{myCocktail.measure4}}</li>
-        <li ng-if="myCocktail.ingredient5">{{myCocktail.ingredient5}}<span ng-if="myCocktail.measure5"> - </span>{{myCocktail.measure5}}</li>
-        <li ng-if="myCocktail.ingredient6">{{myCocktail.ingredient6}}<span ng-if="myCocktail.measure6"> - </span>{{myCocktail.measure6}}</li>
-        <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
-        <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
-
-        <!-- delete cocktail -->
-        <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
-
-      </ul>
-    </div>
+<body ng-controller="MainController as ctrl" class="base">
+  <!-- navigation partial -->
+  <div class="container-fluid d-flex flex-column search" ng-include="'partials/nav.html'"></div>
+  <!-- base container -->
+  <div class="container base-container" ng-include="ctrl.includePath">
   </div>
 </body>
 

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-4">
+    <a href="/" ng-click="ctrl.changeInclude('base')"><h1>Cocktail Database</h1></a>
+  </div>
+  <!-- search form for cocktails -->
+  <form class="col-6 align-self-center" name="getCocktails" ng-submit="ctrl.getCocktails()">
+    <div class="row">
+      <div class="col-3 align-self-center">
+        <h4 class="text-right">{{ ctrl.user }}</h4>
+      </div>
+      <div class="col-6">
+        <input type="text" placeholder="Cocktail Name" ng-model="ctrl.cocktailName">
+      </div>
+      <div class="col-3">
+        <button class="btn btn-primary" type="submit" ng-click="ctrl.changeInclude('base')">SUBMIT</button>
+      </div>
+    </div>
+  </form>
+  <div class="col-2 align-self-center">
+    <a href="/" ng-click="ctrl.changeInclude('user')">Register/Log In</a>
+  </div>
+</div>

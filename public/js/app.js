@@ -5,7 +5,7 @@ app.controller('MainController', ['$http', function($http) {
   const controller = this;
 
   this.indexOfEdit;
-  this.user = "Cocktail";
+  this.user = "Search";
   // this.showLogin = false;
   // this.loggedIn = false;
   this.cocktails = [];
@@ -19,6 +19,13 @@ app.controller('MainController', ['$http', function($http) {
   this.toggleLogout = () => {
     this.loggedIn = !this.loggedIn;
   }
+
+  // Nav partial include switcher
+  this.includePath;
+  this.changeInclude = (path) => {
+    this.includePath = 'partials/' + path + '.html';
+  };
+
 
   // Build API Url
   this.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php/?'

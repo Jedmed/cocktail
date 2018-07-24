@@ -1,0 +1,35 @@
+<div class="row">
+  <h1 class="text-center">Search Results</h1>
+</div>
+<div ng-repeat="cocktail in ctrl.cocktails">
+  <div class="row search-results"><a href="#" ng-click="ctrl.indexOfEdit = $index">{{cocktail.strDrink}}</a>
+    <div ng-if="$index === ctrl.indexOfEdit">
+      <form class="search-item row" ng-submit="ctrl.addCocktail($index)">
+        <input class="col-2 offset-10 btn btn-secondary" type="submit" value="Save to my List" />
+        <div class="row">
+          <h2 class="title">{{cocktail.strDrink}}</h2>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <img class="img-fluid" ng-src="{{cocktail.strDrinkThumb}}" alt="{{cocktail.strDrink}}">
+          </div>
+          <div class="col-6">
+            <h4 ng-if="cocktail.strIngredient1">Instructions: </h4>
+            <p>{{cocktail.strInstructions}}</p>
+            <h4 ng-if="cocktail.strIngredient1">Ingredients & Measurement: </h4>
+            <ul ng-if="cocktail.strIngredient1">
+              <li ng-if="cocktail.strIngredient1">{{cocktail.strIngredient1}}<span ng-if="cocktail.strMeasure1"> - </span>{{cocktail.strMeasure1}}</li>
+              <li ng-if="cocktail.strIngredient2">{{cocktail.strIngredient2}}<span ng-if="cocktail.strMeasure2"> - </span>{{cocktail.strMeasure2}}</li>
+              <li ng-if="cocktail.strIngredient3">{{cocktail.strIngredient3}}<span ng-if="cocktail.strMeasure3"> - </span>{{cocktail.strMeasure3}}</li>
+              <li nf-ig="cocktail.strIngredient4">{{cocktail.strIngredient4}}<span ng-if="cocktail.strMeasure4"> - </span>{{cocktail.strMeasure4}}</li>
+              <li ng-if="cocktail.strIngredient5">{{cocktail.strIngredient5}}<span ng-if="cocktail.strMeasure5"> - </span>{{cocktail.strMeasure5}}</li>
+              <li ng-if="cocktail.strIngredient6">{{cocktail.strIngredient6}}<span ng-if="cocktail.strMeasure6"> - </span>{{cocktail.strMeasure6}}</li>
+              <li ng-if="cocktail.strIngredient7">{{cocktail.strIngredient7}}<span ng-if="cocktail.strMeasure7"> - </span>{{cocktail.strMeasure7}}</li>
+              <li ng-if="cocktail.strIngredient8">{{cocktail.strIngredient8}}<span ng-if="cocktail.strMeasure8"> - </span>{{cocktail.strMeasure8}}</li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

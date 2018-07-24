@@ -1,9 +1,61 @@
+body {
+
+}
+
 .login {
   padding: 30px;
   background-color: steelblue;
 }
 
+.search {
+  background-color: white;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 0.15em 0.35em 0 rgba(0, 0, 0, 0.135);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+h1, h2, h4 {
+  margin: 0;
+  font-family: 'Oswald', 'Impact', sans-serif;
+  font-weight: 400;
+}
+
+.base {
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/what-the-hex-dark.png");
+}
+
+.base-container {
+  min-height: 100vh;
+  background-color: white;
+  margin: 30px auto;
+  padding: 30px;
+}
+
+.search-results {
+  padding: 20px;
+  border-bottom: 1px dotted black;
+}
+
+.title {
+  padding-left: 30px;
+}
+.search-item {
+  padding: 30px;
+  border: 3px solid blue;
+}
+
 input {
+  padding-left: 10px;
+  height: 100%;
   width: 100%;
   border-radius: 2px;
 }
@@ -12,12 +64,19 @@ input {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.btn-primary {
+  padding: 10px 30px;
+}
+
 .Log {
   display: none !important;
 }
+
 .hide-log {
   display: none;
 }
+
 .Logged {
   display: flex;
 }

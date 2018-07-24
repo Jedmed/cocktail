@@ -1,0 +1,39 @@
+  <div class="row">
+    <form class="row" ng-class="(ctrl.showLogin ? 'hide-log' : '')" ng-submit="ctrl.createUser()">
+      <div class="row">
+        <div class="col-3">
+          <h5 class="text-center">Create User</h5>
+        </div>
+        <div class="col-3">
+          <input type="text" ng-model="ctrl.username" placeholder="New Username" />
+        </div>
+        <div class="col-3">
+          <input type="password" ng-model="ctrl.password" placeholder="Password" />
+        </div>
+        <div class="col-3">
+          <input class="btn btn-secondary" type="submit" value="Create User" ng-click="ctrl.toggleLogin()" />
+        </div>
+      </div>
+    </form>
+    <form class="row" ng-submit="ctrl.logIn()" ng-class="(ctrl.showLogin ? 'Logged' : '') + ' ' + (ctrl.loggedIn ? 'Log' : '')">
+      <div class="row">
+        <div class="col-3">
+          <h5 class="text-center">Log In</h5>
+        </div>
+        <div class="col-3">
+          <input type="text" ng-model="ctrl.username" placeholder="Username" />
+        </div>
+        <div class="col-3">
+          <input type="password" ng-model="ctrl.password" placeholder="Password" />
+        </div>
+        <div class="col-3">
+          <input class="btn btn-secondary" type="submit" value="Log In" ng-click="ctrl.toggleLogout()" />
+        </div>
+      </div>
+    </form>
+    <form class="row" ng-class="(ctrl.loggedIn ? '' : 'Log')">
+      <div class="col-2 offset-10">
+        <input class="btn btn-danger" type="submit" value="Log Out" ng-click="ctrl.logOut()" />
+      </div>
+    </form>
+  </div>
