@@ -1,24 +1,33 @@
-<div class="my-cocktails">
-  <h1>My Cocktails</h1>
-  <div class="row" ng-repeat="myCocktail in ctrl.myCocktails.cocktail">
-    <h2>{{ myCocktail.name }}</h2>
-    <img ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
-    <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
-    <p>{{myCocktail.instructions}}</p>
-    <h4 ng-if="myCocktail.ingredient1">Ingredients & Measurement: </h4>
-    <ul ng-if="myCocktail.ingredient1">
-      <li ng-if="myCocktail.ingredient1">{{myCocktail.ingredient1}}<span ng-if="myCocktail.measure1"> - </span>{{myCocktail.measure1}}</li>
-      <li ng-if="myCocktail.ingredient2">{{myCocktail.ingredient2}}<span ng-if="myCocktail.measure2"> - </span>{{myCocktail.measure2}}</li>
-      <li ng-if="myCocktail.ingredient3">{{myCocktail.ingredient3}}<span ng-if="myCocktail.measure3"> - </span>{{myCocktail.measure3}}</li>
-      <li nf-ig="myCocktail.ingredient4">{{myCocktail.ingredient4}}<span ng-if="myCocktail.measure4"> - </span>{{myCocktail.measure4}}</li>
-      <li ng-if="myCocktail.ingredient5">{{myCocktail.ingredient5}}<span ng-if="myCocktail.measure5"> - </span>{{myCocktail.measure5}}</li>
-      <li ng-if="myCocktail.ingredient6">{{myCocktail.ingredient6}}<span ng-if="myCocktail.measure6"> - </span>{{myCocktail.measure6}}</li>
-      <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
-      <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
-
-      <!-- delete cocktail -->
-      <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
-
-    </ul>
+<div class="my-cocktails row">
+  <h1 class="maintitle">My Cocktails</h1>
+  <div class="individual-cocktails" ng-repeat="myCocktail in ctrl.myCocktails.cocktail">
+    <div class="row">
+      <div class="col-6">
+        <h2 class="title">{{ myCocktail.name }}</h2>
+      </div>
+      <div class="col-6 text-right">
+        <button class="btn btn-danger text-right" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <img class="img-fluid" ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
+      </div>
+      <div class="col-6">
+        <h4 ng-if="myCocktail.ingredient1">Instructions: </h4>
+        <p>{{myCocktail.instructions}}</p>
+        <h4 ng-if="myCocktail.ingredient1">Ingredients & Measurement: </h4>
+        <ul ng-if="myCocktail.ingredient1">
+          <li ng-if="myCocktail.ingredient1">{{myCocktail.ingredient1}}<span ng-if="myCocktail.measure1"> - </span>{{myCocktail.measure1}}</li>
+          <li ng-if="myCocktail.ingredient2">{{myCocktail.ingredient2}}<span ng-if="myCocktail.measure2"> - </span>{{myCocktail.measure2}}</li>
+          <li ng-if="myCocktail.ingredient3">{{myCocktail.ingredient3}}<span ng-if="myCocktail.measure3"> - </span>{{myCocktail.measure3}}</li>
+          <li nf-ig="myCocktail.ingredient4">{{myCocktail.ingredient4}}<span ng-if="myCocktail.measure4"> - </span>{{myCocktail.measure4}}</li>
+          <li ng-if="myCocktail.ingredient5">{{myCocktail.ingredient5}}<span ng-if="myCocktail.measure5"> - </span>{{myCocktail.measure5}}</li>
+          <li ng-if="myCocktail.ingredient6">{{myCocktail.ingredient6}}<span ng-if="myCocktail.measure6"> - </span>{{myCocktail.measure6}}</li>
+          <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
+          <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

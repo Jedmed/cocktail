@@ -6,19 +6,7 @@ app.controller('MainController', ['$http', function($http) {
 
   this.indexOfEdit;
   this.user = "Search";
-  // this.showLogin = false;
-  // this.loggedIn = false;
-  this.cocktails = [];
-  this.showMyCocktails = false;
-
-  //Toggle Login
-  this.toggleLogin = () => {
-    this.showLogin = !this.showLogin;
-  }
-
-  this.toggleLogout = () => {
-    this.loggedIn = !this.loggedIn;
-  }
+  this.loggedIn = false;
 
   // Nav partial include switcher
   this.includePath;
@@ -57,8 +45,8 @@ app.controller('MainController', ['$http', function($http) {
     }).then(response => {
       this.currentUser = response.data;
       this.myCocktail;
-      this.user = "Logged In";
-      this.showMyCocktails = true;
+      this.user = "Welcome! " + response.data.username;
+      this.loggedIn = true;
       this.showCocktails();
     }, error => {
       console.log('error');
@@ -71,13 +59,13 @@ app.controller('MainController', ['$http', function($http) {
       method: 'POST',
       url: '/sessions',
       data: {
-        username: this.username,
-        password: this.password
+        username: this.loginusername,
+        password: this.loginpassword
       }
     }).then(response => {
       this.currentUser = response.data;
-      this.user = "Logged In";
-      this.showMyCocktails = true;
+      this.user = "Welcome! " + response.data.username;
+      this.loggedIn = true;
       this.showCocktails();
     }, error => {
       console.log('error');
@@ -90,11 +78,9 @@ app.controller('MainController', ['$http', function($http) {
       method: 'DELETE',
       url: '/sessions',
     }).then(response => {
-      this.currentUser = null;
-      this.user = "Cocktail"
-      this.toggleLogin();
+      this.currentUser = undefined;
+      this.user = "Search"
       this.loggedIn = false;
-      this.showMyCocktails = false;
     }, () => {
       console.log('error');
     })

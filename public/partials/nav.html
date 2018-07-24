@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <a href="/" ng-click="ctrl.changeInclude('base')"><h1>Cocktail Database</h1></a>
   </div>
   <!-- search form for cocktails -->
   <form class="col-6 align-self-center" name="getCocktails" ng-submit="ctrl.getCocktails()">
     <div class="row">
-      <div class="col-3 align-self-center">
-        <h4 class="text-right">{{ ctrl.user }}</h4>
+      <div class="col-4 align-self-center">
+        <h4 class="text-right text-upper">{{ ctrl.user }}</h4>
       </div>
-      <div class="col-6">
+      <div class="col-5">
         <input type="text" placeholder="Cocktail Name" ng-model="ctrl.cocktailName">
       </div>
       <div class="col-3">
@@ -16,7 +16,15 @@
       </div>
     </div>
   </form>
-  <div class="col-2 align-self-center">
-    <a href="/" ng-click="ctrl.changeInclude('user')">Register/Log In</a>
+  <div class="col-3 align-self-center text-right">
+    <a ng-if="!ctrl.loggedIn" href="/" ng-click="ctrl.changeInclude('user')">Register/Log In</a>
+    <form class="row" ng-if="ctrl.loggedIn">
+      <div class="col-6">
+        <a href="/" class="btn btn-secondary" ng-click="ctrl.changeInclude('saved')">My List</a>
+      </div>
+      <div class="col-6">
+        <input class="btn btn-danger" type="submit" value="Log Out" ng-click="ctrl.logOut()" />
+      </div>
+    </form>
   </div>
 </div>

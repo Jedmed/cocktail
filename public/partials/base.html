@@ -1,13 +1,17 @@
 <div class="row">
-  <h1 class="text-center">Search Results</h1>
+  <h1 class="maintitle">Search Results</h1>
 </div>
 <div ng-repeat="cocktail in ctrl.cocktails">
   <div class="row search-results"><a href="#" ng-click="ctrl.indexOfEdit = $index">{{cocktail.strDrink}}</a>
     <div ng-if="$index === ctrl.indexOfEdit">
-      <form class="search-item row" ng-submit="ctrl.addCocktail($index)">
-        <input class="col-2 offset-10 btn btn-secondary" type="submit" value="Save to my List" />
+      <form class="search-item" ng-submit="ctrl.addCocktail($index)">
         <div class="row">
-          <h2 class="title">{{cocktail.strDrink}}</h2>
+          <div class="col-6">
+            <h2 class="title">{{cocktail.strDrink}}</h2>
+          </div>
+          <div class="col-2 offset-4">
+            <input ng-if="ctrl.currentUser" class="btn btn-secondary" type="submit" value="Save to my List" />
+          </div>
         </div>
         <div class="row">
           <div class="col-6">
