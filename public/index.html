@@ -63,7 +63,7 @@
         <!-- display cocktails -->
         <div ng-if="$index === ctrl.indexOfEdit">
           <form ng-submit="ctrl.addCocktail($index)">
-            <input type="submit" value="Save to my List"/>
+            <input type="submit" value="Save to my List" />
             <h2>{{cocktail.strDrink}}</h2>
             <img ng-src="{{cocktail.strDrinkThumb}}" alt="{{cocktail.strDrink}}">
             <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
@@ -86,7 +86,7 @@
   </div>
   <div class="container my-cocktails">
     <h1>My Cocktails</h1>
-    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails" ng-if="ctrl.showMyCocktails === true">
+    <div class="row" ng-repeat="myCocktail in ctrl.myCocktails" ng-if="ctrl.showMyCocktails">
       <h2>{{ myCocktail.name }}</h2>
       <img ng-src="{{myCocktail.img}}" alt="{{myCocktail.name}}">
       <h4 ng-if="cocktail.ingredient1">Instructions: </h4>
@@ -101,6 +101,7 @@
         <li ng-if="myCocktail.ingredient6">{{myCocktail.ingredient6}}<span ng-if="myCocktail.measure6"> - </span>{{myCocktail.measure6}}</li>
         <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
         <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
+
           <!-- delete cocktail -->
           <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
 
