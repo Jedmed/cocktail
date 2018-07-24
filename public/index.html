@@ -104,7 +104,30 @@
 
           <!-- delete cocktail -->
           <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
-
+          <!-- edit cocktail -->
+          <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Edit This Cocktail</a>
+          <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editCocktail(myCocktail)">
+            <input type="text" ng-model="ctrl.updatedCocktailName" placeholder="name">
+            <input type="text" ng-model="ctrl.updatedImg" placeholder="img url"></br>
+            <input type="text" ng-model="ctrl.updatedInstructions" placeholder="instructions">
+            <span ng-if="myCocktail.ingredient1"><input type="text" ng-model="ctrl.updatedIngredient1" placeholder="ingredient 1"></span></br>
+            <input type="text" ng-model="ctrl.updatedIngredient2" placeholder="ingredient 2"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient3" placeholder="ingredient 3"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient4" placeholder="ingredient 4"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient5" placeholder="ingredient 5"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient6" placeholder="ingredient 6"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient7" placeholder="ingredient 7"></br>
+            <input type="text" ng-model="ctrl.updatedIngredient8" placeholder="ingredient 8"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure1" placeholder="measure 1"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure2" placeholder="measure 2"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure3" placeholder="measure 3"></br>
+            <span ng-if="myCocktail.measure4"><input type="text" ng-model="ctrl.updatedMeasure4" placeholder="measure 4"></span></br>
+            <input type="text" ng-model="ctrl.updatedMeasure5" placeholder="measure 5"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure6" placeholder="measure 6"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure7" placeholder="measure 7"></br>
+            <input type="text" ng-model="ctrl.updatedMeasure8" placeholder="measure 8"></br>
+            <input type="submit" value="Update Cocktail">
+          </form>
       </ul>
     </div>
   </div>

@@ -141,9 +141,43 @@ this.showCocktails();
   // DELETE COCKTAIL //
   this.deleteCocktail = function(cocktail) {
     $http({
-      method: "DELETE",
-      url: "/users/" + cocktail._id
+      method: 'DELETE',
+      url: '/users/' + cocktail._id
     }).then(function(response) {
+      controller.showCocktails();
+    });
+  }
+
+  // EDIT COCKTAIL //
+  this.editCocktail = function(cocktail) {
+    console.log(this);
+  	$http({
+  		method: 'PATCH',
+  		url: '/users/' + cocktail._id,
+  		data: {
+  			name: this.updatedCocktailName,
+  			img: this.updatedImg,
+  			instructions: this.updatedInstructions,
+  			ingredient1: this.updatedIngredient1,
+  			ingredient2: this.updatedIngredient2,
+  			ingredient3: this.updatedIngredient3,
+  			ingredient4: this.updatedIngredient4,
+  			ingredient5: this.updatedIngredient5,
+  			ingredient6: this.updatedIngredient6,
+  			ingredient7: this.updatedIngredient7,
+  			ingredient8: this.updatedIngredient8,
+  			// measure
+  			measure1: this.updatedMeasure1,
+  			measure2: this.updatedMeasure2,
+  			measure3: this.updatedMeasure3,
+  			measure4: this.updatedMeasure4,
+  			measure5: this.updatedMeasure5,
+  			measure6: this.updatedMeasure6,
+  			measure7: this.updatedMeasure7,
+  			measure8: this.updatedMeasure8,
+  		}
+  	}).then(function(response) {
+      console.log(response)
       controller.showCocktails();
     });
   }

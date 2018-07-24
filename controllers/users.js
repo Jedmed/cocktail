@@ -35,11 +35,12 @@ router.delete('/:id', (req, res)=>{
     });
 });
 
-// put route for user saved My Cocktails
-// router.post('/:username', (req, res) => {
-// 	User.create(req.body, (err, addedCocktail) => {
-// 		res.json(addedCocktail);
-// 	});
-// });
+// edit route
+router.patch('/:id', (req, res)=>{
+    User.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedCocktail)=>{
+        res.json(updatedCocktail);
+    });
+});
+
 
 module.exports = router;
