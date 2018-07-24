@@ -136,6 +136,22 @@ app.controller('MainController', ['$http', function($http) {
       console.log('error');
     });
   };
-  this.showCocktails();
+this.showCocktails();
+
+  // DELETE COCKTAIL //
+  this.deleteCocktail = function(cocktail) {
+    console.log('deleted on refresh');
+    $http({
+      method: "DELETE",
+      url: "/cocktails/" + cocktail._id
+    }).then(function(response) {
+      controller.getCocktails();
+    });
+  }
+
+ // EDIT COCKTAIL //
+
+
+
 
 }]); //Closes app controller
