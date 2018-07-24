@@ -91,7 +91,7 @@ app.controller('MainController', ['$http', function($http) {
 
   // Save Cocktail
   this.addCocktail = function(index) {
-    console.log(this);
+    // console.log(this.cocktails[index].idDrink);
     $http({
       method: 'PUT',
       url: '/users/' + this.username,
@@ -130,8 +130,8 @@ app.controller('MainController', ['$http', function($http) {
       url: '/users/' + this.username
     }).then(function(response) {
       controller.myCocktails = response.data;
-      console.log(response.data)
-      // controller.loggedInUser = this.username;
+      // console.log(response.data)
+      controller.loggedInUser = this.username;
     }, () => {
       console.log('error');
     });
@@ -143,9 +143,9 @@ this.showCocktails();
     console.log('deleted on refresh');
     $http({
       method: "DELETE",
-      url: "/cocktails/" + cocktail._id
+      url: "/users/" + cocktail._id
     }).then(function(response) {
-      controller.getCocktails();
+      controller.showCocktails();
     });
   }
 
