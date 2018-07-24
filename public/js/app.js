@@ -130,6 +130,21 @@ app.controller('MainController', ['$http', function($http) {
       console.log('error');
     });
   };
-  this.showCocktails();
+this.showCocktails();
+
+  // DELETE COCKTAIL //
+  this.deleteCocktail = function(cocktail) {
+    console.log('clicked');
+    $http({
+      method: "DELETE",
+      url: "/cocktails/" + cocktail._id
+    }).then(function(response) {
+      controller.getCocktails();
+    });
+  }
+
+
+
+
 
 }]); //Closes app controller

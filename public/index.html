@@ -59,6 +59,7 @@
     </form>
     <ul ng-repeat="cocktail in ctrl.cocktails">
       <li><a href="#" ng-click="ctrl.indexOfEdit = $index">{{cocktail.strDrink}}</a>
+
         <!-- display cocktails -->
         <div ng-if="$index === ctrl.indexOfEdit">
           <form ng-submit="ctrl.addCocktail($index)">
@@ -100,6 +101,9 @@
         <li ng-if="myCocktail.ingredient6">{{myCocktail.ingredient6}}<span ng-if="myCocktail.measure6"> - </span>{{myCocktail.measure6}}</li>
         <li ng-if="myCocktail.ingredient7">{{myCocktail.ingredient7}}<span ng-if="myCocktail.measure7"> - </span>{{myCocktail.measure7}}</li>
         <li ng-if="myCocktail.ingredient8">{{myCocktail.ingredient8}}<span ng-if="myCocktail.measure8"> - </span>{{myCocktail.measure8}}</li>
+          <!-- delete cocktail -->
+          <button class="delete" ng-click="ctrl.deleteCocktail(myCocktail)">Delete</button>
+
       </ul>
     </div>
   </div>
